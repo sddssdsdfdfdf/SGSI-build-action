@@ -79,3 +79,9 @@ jobs:
           tag: "${{ steps.config.outputs.os_type }}${{ steps.config.outputs.build_type }}-${{ steps.config.outputs.version }}-${{ github.run_number }}"
           bodyFile: "${{ github.workspace}}/SGSI-build-tool/SGSI/build_info.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload GSI to WeTransfer
+        run: |
+              cd $GITHUB_WORKSPACE/ErfanGSIs/output
+              curl -sL https://git.io/file-transfer | sh
+              ./transfer wet $GITHUB_WORKSPACE/SGSI-build-tool/SGSI/${{ steps.config.outputs.repack_name }}

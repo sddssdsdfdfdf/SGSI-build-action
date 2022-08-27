@@ -82,7 +82,7 @@ jobs:
           
       - name: Upload GSI to WeTransfer
         run: |
-              cd $GITHUB_WORKSPACE/SGSI-build-tool/SGSI/
+              cd $GITHUB_WORKSPACE/SGSI-build-tool/
               curl -sL https://git.io/file-transfer | sh
               ls
               ./transfer wet ${{ steps.config.outputs.repack_name }}
